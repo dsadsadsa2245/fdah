@@ -1,10 +1,20 @@
-
 from pydantic import BaseModel
 
 
-class UserCreateSchema(BaseModel):
+class UserBaseSchema(BaseModel):
     username: str
     password: str
+
+    def split(self):
+        return True
+
+
+class UserCreateSchema(UserBaseSchema):
+    pass
+
+
+class UserAuthSchema(UserBaseSchema):
+    pass
 
 
 class UserRead(BaseModel):
@@ -13,3 +23,5 @@ class UserRead(BaseModel):
 
     class Config:
         orm_mode = True
+
+
